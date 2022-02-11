@@ -1,5 +1,5 @@
 #include "memomanager.h"
-
+#include "memoeditor.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -17,12 +17,14 @@ int main(int argc, char *argv[])
       break;
     }
   }
-  MemoManager w;
-  QColor clr(173, 153, 137);
-  QPalette pal = w.palette();
-  pal.setColor(QPalette::Window, clr);
-  w.setAutoFillBackground(true);
-  w.setPalette(pal);
+//  MemoManager w;
+//  QColor clr(173, 153, 137);
+//  QPalette pal = w.palette();
+//  pal.setColor(QPalette::Window, clr);
+//  w.setAutoFillBackground(true);
+//  w.setPalette(pal);
+//  w.show();
+  MemoEditor w;
   w.show();
   return a.exec();
 }

@@ -17,6 +17,12 @@ FineTitle::FineTitle(QWidget *parent, TitleButtonType button_type)
 }
 FineTitle::~FineTitle() {
   // NOTE: Remember to delete!!!
+  delete label_icon_;
+  delete label_title_text_;
+  delete button_close_;
+  delete button_minimize_;
+  delete button_maximize_;
+  delete button_restore_;
 }
 void FineTitle::set_background_color(QColor clr) {
   this->title_color_ = clr;
@@ -74,8 +80,11 @@ void FineTitle::get_restore_info(QPoint &pos, QSize &sz) {
   pos = restore_pos_;
   sz = restore_size_;
 }
+// protects
+void FineTitle::mouseDoubleClickEvent(QMouseEvent *e) {
+  return QWidget::mouseDoubleClickEvent(e);
+}
 // privates
-// virtual void mouseDoubleClickEvent(QMouseEvent *e) = 0;
 void FineTitle::mousePressEvent(QMouseEvent *e) {
   // restore when maximized
   if (button_type_ == TitleButtonType::MIN_AND_MAX &&
@@ -109,6 +118,8 @@ void FineTitle::init_widgets() {
   button_maximize_  = new QPushButton;
   button_restore_   = new QPushButton;
   // size, objname, tooltip and layout
+  // NOTE: this is not deleted in destructor
+  //       will it cause memory leak?
   QHBoxLayout *title_layout = new QHBoxLayout(this);
   title_layout->addWidget(label_icon_);
   title_layout->addWidget(label_title_text_);
@@ -141,22 +152,14 @@ void FineTitle::init_widgets() {
   this->setWindowFlags(Qt::FramelessWindowHint);
 }
 void FineTitle::init_connects() {
-  if (button_minimize_ != nullptr) {
     connect(button_minimize_, &QPushButton::clicked,
             this, &FineTitle::slot_minimize_clicked);
-  }
-  if (button_restore_ != nullptr) {
     connect(button_restore_, &QPushButton::clicked,
             this, &FineTitle::slot_restore_clicked);
-  }
-  if (button_maximize_ != nullptr) {
     connect(button_maximize_, &QPushButton::clicked,
             this, &FineTitle::slot_maximize_clicked);
-  }
-  if (button_close_ != nullptr) {
     connect(button_close_, &QPushButton::clicked,
             this, &FineTitle::slot_close_clicked);
-  }
 }
 // load qss
 void FineTitle::load_style_sheet(const QString &sheet_name) {

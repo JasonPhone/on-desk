@@ -28,9 +28,10 @@ class FineTitle : public QWidget
     void save_restore_info(const QPoint pos, const QSize sz);
     // Reference param type for receiving value
     void get_restore_info(QPoint &pos, QSize &sz);
+  protected:
+    // different behaviours
+    void mouseDoubleClickEvent(QMouseEvent *e);
   private:
-    // Virtual for different behaviours
-    virtual void mouseDoubleClickEvent(QMouseEvent *e) = 0;
     // That's common behaviour
     void mousePressEvent(QMouseEvent *e);
     void mouseMoveEvent(QMouseEvent *e);
@@ -44,7 +45,7 @@ class FineTitle : public QWidget
     void signal_restore_clicked();
     void signal_maximize_clicked();
     void signal_close_clicked();
-  private slots:
+  protected slots:
     void slot_minimize_clicked();
     void slot_restore_clicked();
     void slot_maximize_clicked();

@@ -24,6 +24,13 @@ set(PROJECT_SOURCES
         memomanager.ui
         finetitle.cpp
         finetitle.h
+        memoeditortitle.cpp
+        memoeditortitle.h
+        memoeditor.cpp
+        memoeditor.h
+        memoeditor.ui
+        memoobj.cpp
+        memoobj.h
         ${TS_FILES}
         ${QRC_FILE}
 )
