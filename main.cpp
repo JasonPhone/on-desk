@@ -18,6 +18,11 @@ int main(int argc, char *argv[])
     }
   }
   MemoManager w;
+  QColor clr(173, 153, 137);
+  QPalette pal = w.palette();
+  pal.setColor(QPalette::Window, clr);
+  w.setAutoFillBackground(true);
+  w.setPalette(pal);
   w.show();
   return a.exec();
 }

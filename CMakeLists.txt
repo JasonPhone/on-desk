@@ -15,13 +15,17 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
 
 set(TS_FILES OnDesk_zh_CN.ts)
+set(QRC_FILE resources.qrc)
 
 set(PROJECT_SOURCES
         main.cpp
         memomanager.cpp
         memomanager.h
         memomanager.ui
+        finetitle.cpp
+        finetitle.h
         ${TS_FILES}
+        ${QRC_FILE}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

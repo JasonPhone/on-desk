@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/sty/default_title_style.qss</file>
+    </qresource>
+</RCC>
