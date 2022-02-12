@@ -1,5 +1,6 @@
 #include "memomanager.h"
 #include "memoeditor.h"
+#include "memoobj.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -26,5 +27,13 @@ int main(int argc, char *argv[])
 //  w.show();
   MemoEditor w;
   w.show();
+  MemoObj *memo = MemoObj::init_memo_obj(2, "./memos/");
+  if (memo != nullptr) {
+    qDebug() << memo->handle() << ", " << memo->date_created().toString("yy-MM-dd hh:mm:ss");
+    memo->update_date_modified();
+    memo->save_meta();
+
+  } else
+    qDebug() << "got nullptr";
   return a.exec();
 }

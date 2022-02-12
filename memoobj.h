@@ -10,20 +10,22 @@ class MemoObj
   public:
     ~MemoObj();
     // getters
-    static MemoObj* get_memo_obj(const int handle,
-                                 const QString memo_dir = "./");
+    static MemoObj* init_memo_obj(const int handle,
+                                  const QString memo_dir = "./");
     int handle();
     QString title();
     QDateTime date_created();
     QDateTime date_modified();
     void get_tags(QStringList &tags);
     QString file_path();
+    QString meta_path();
     // setters
     void set_title(const QString new_title);
     void update_date_modified();
     void append_tag(QString new_tag);
+    bool save_meta();
   private:
-    MemoObj(const int hdl, const QString file_path);
+    MemoObj(const int hdl, const QString memo_dir);
     struct MetaInfo;
     MetaInfo *meta_;
 };
