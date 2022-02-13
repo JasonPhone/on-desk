@@ -25,15 +25,15 @@ int main(int argc, char *argv[])
 //  w.setAutoFillBackground(true);
 //  w.setPalette(pal);
 //  w.show();
-  MemoEditor w;
+  MemoEditor w(nullptr, nullptr);
   w.show();
-  MemoObj *memo = MemoObj::init_memo_obj(2, "./memos/");
-  if (memo != nullptr) {
-    qDebug() << memo->handle() << ", " << memo->date_created().toString("yy-MM-dd hh:mm:ss");
-    memo->update_date_modified();
-    memo->save_meta();
+//  MemoObj *memo = MemoObj::init_memo_obj(2, "./memos/");
+//  if (memo != nullptr) {
+//    qDebug() << memo->handle() << ", " << memo->date_created().toString("yy-MM-dd hh:mm:ss");
+//    memo->update_date_modified();
+//    memo->save_meta();
 
-  } else
-    qDebug() << "got nullptr";
+//  } else
+//    qDebug() << "got nullptr";
   return a.exec();
 }

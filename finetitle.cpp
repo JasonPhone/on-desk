@@ -121,6 +121,8 @@ void FineTitle::init_widgets() {
   // NOTE: this is not deleted in destructor
   //       will it cause memory leak?
   QHBoxLayout *title_layout = new QHBoxLayout(this);
+  title_layout->setContentsMargins(0, 0, 0, 0);
+  title_layout->setSpacing(3);
   title_layout->addWidget(label_icon_);
   title_layout->addWidget(label_title_text_);
   // minimize

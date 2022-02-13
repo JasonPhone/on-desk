@@ -24,8 +24,9 @@ set(PROJECT_SOURCES
         memomanager.ui
         finetitle.cpp
         finetitle.h
-        memoeditortitle.cpp
-        memoeditortitle.h
+        editortitle.cpp
+        editortitle.h
+        editortitle.ui
         memoeditor.cpp
         memoeditor.h
         memoeditor.ui
