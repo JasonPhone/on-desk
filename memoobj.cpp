@@ -45,60 +45,10 @@ MemoObj* MemoObj::init_memo_obj(const int handle,
   }
   MemoObj *memo = new MemoObj(handle, memo_dir);
   qDebug() << "dir ok";
-  // test the file
-  qDebug() << "testing meta";
-  QString meta_path = memo_dir + QString("%1").arg(handle) + ".memo";
-  QFile meta(meta_path);
-  qDebug() << "try opening " << meta_path;
-  if (meta.open(QIODevice::NewOnly)) {
-    meta.close();
-    qDebug() << "new memo meta";
-    QString file_path = memo_dir + QString("%1").arg(handle) + ".html";
-    QFile file(file_path);
-    qDebug() << "try creating" << file_path;
-    file.open(QIODevice::WriteOnly);
-    file.close();
-  } else {
-    // init meta info if the memo exists
-    meta.open(QIODevice::ReadOnly);
-    QTextStream meta_flow(&meta);
-    QString meta_str = meta_flow.readAll();
-    qDebug() << meta_str;
-    QMap<QString, QString> meta_info;
-    if (!meta_str.isEmpty()) {
-      qDebug() << "found existing meta, reading";
-      QStringList entry = meta_str.split(";");
-      for (auto& e : entry) {
-        e = e.simplified();
-        if (e.isEmpty()) continue;
-        qDebug() << e;
-        int split_pos = e.indexOf(":");
-        if (split_pos == -1) {
-          qDebug() << "ERROR: cannot read meta info: wrong configure format";
-        } else {
-          QString key = e.first(split_pos);
-          QString val = e.last(e.size() - split_pos - 1);
-          meta_info[key] = val;
-        }
-      }
-      memo->meta_->handle = meta_info["handle"].toInt();
-      memo->meta_->title = meta_info["title"];
-      // yyyy-MM-dd hh:mm:ss
-      memo->meta_->date_created =
-          QDateTime::fromString(meta_info["date_created"], "yyyy-MM-dd hh:mm:ss");
-      memo->meta_->date_modified =
-          QDateTime::fromString(meta_info["date_modified"], "yyyy-MM-dd hh:mm:ss");
-      memo->meta_->memo_dir = meta_info["memo_dir"];
-      QStringList tag_list = meta_info["tags"].split(",");
-      for (auto tag : tag_list) {
-        if (tag.isEmpty()) continue;
-        memo->meta_->tags.append(tag);
-      }
-      // NOTE: color is not considered
-    } else {
-      qDebug() << "empty meta, new memo";
-    }
-    meta.close();
+  if (!memo->load_meta()) {
+    qDebug() << "ERROR: failed to load meta info";
+    delete memo;
+    return nullptr;
   }
   qDebug() << "files created";
   // return memo ptr
@@ -125,6 +75,9 @@ QString MemoObj::file_path() {
 QString MemoObj::meta_path() {
   return (meta_->memo_dir) + QString("%1").arg(meta_->handle) + ".memo";
 }
+QString MemoObj::memo_dir() {
+  return meta_->memo_dir;
+}
 // setters
 void MemoObj::set_title(const QString new_title) {
   meta_->title = new_title;
@@ -147,7 +100,7 @@ bool MemoObj::save_meta() {
   // QString title;
   meta_flow << "title:"
             << meta_->title << ";";
-  //// "yyyy-MM-dd hh:mm:ss"
+  // "yyyy-MM-dd hh:mm:ss"
   // QDateTime date_created, date_modified;
   meta_flow << "date_created:"
             << meta_->date_created.toString("yyyy-MM-dd hh:mm:ss") << ";";
@@ -156,7 +109,7 @@ bool MemoObj::save_meta() {
   // QStringList tags;
   meta_flow << "tags:";
   qDebug() << "size of tags: " << meta_->tags.size();
-  for (auto tag : meta_->tags) {
+  for (const auto& tag : meta_->tags) {
     meta_flow << tag << ",";
   }
   meta_flow << ";";
@@ -164,5 +117,114 @@ bool MemoObj::save_meta() {
   meta_flow << "memo_dir:"
             << meta_->memo_dir << ";";
   meta.close();
+  return true;
+}
+bool MemoObj::load_meta() {
+  // test the file
+  qDebug() << "testing meta";
+  QString meta_path = this->meta_path();
+  QFile meta(meta_path);
+  qDebug() << "try opening " << meta_path;
+  if (meta.open(QIODevice::NewOnly)) {
+    qDebug() << "new memo meta";
+    QTextStream meta_flow(&meta);
+    meta_flow << "handle:" << this->handle() << ";"
+              << "title:" << "" << ";"
+              << "date_created:"
+              << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+              << "date_modified:"
+              << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+              << "tags:" << "" << ";"
+              << "memo_dir:" << this->meta_->memo_dir << ";";
+    meta.close();
+    QString file_path = this->file_path();
+    QFile file(file_path);
+    qDebug() << "try creating" << file_path;
+    file.open(QIODevice::WriteOnly);
+    file.close();
+  } else {
+    // init meta info if the memo exists
+    meta.open(QIODevice::ReadOnly);
+    QTextStream meta_flow(&meta);
+    QString meta_str = meta_flow.readAll();
+    meta.close();
+    qDebug() << meta_str;
+    QMap<QString, QString> meta_info;
+    if (!meta_str.isEmpty()) {
+      qDebug() << "found existing meta, reading";
+      QStringList entry = meta_str.split(";");
+      for (auto& e : entry) {
+        e = e.simplified();
+        if (e.isEmpty()) continue;
+        qDebug() << e;
+        int split_pos = e.indexOf(':');
+        if (split_pos == -1) {
+          qDebug() << "ERROR: cannot read meta info: wrong configure format";
+          return false;
+        } else {
+          QString key = e.first(split_pos).simplified();
+          QString val = e.last(e.size() - split_pos - 1).simplified();
+          meta_info[key] = val;
+        }
+      }
+      if (meta_info.count("handle"))
+        this->meta_->handle = meta_info["handle"].toInt();
+      else {
+        qDebug() << "ERROR: no handle detected";
+        return false;
+      }
+      if (meta_info.count("title"))
+        this->meta_->title = meta_info["title"];
+      else {
+        qDebug() << "ERROR: no title detected";
+        return false;
+      }
+      // yyyy-MM-dd hh:mm:ss
+      if (meta_info.count("date_created"))
+        this->meta_->date_created =
+            QDateTime::fromString(meta_info["date_created"], "yyyy-MM-dd hh:mm:ss");
+      else {
+        qDebug() << "ERROR: no date_created detected";
+        return false;
+      }
+      if (meta_info.count("date_modified"))
+        this->meta_->date_modified =
+            QDateTime::fromString(meta_info["date_modified"], "yyyy-MM-dd hh:mm:ss");
+      else {
+        qDebug() << "ERROR: no date_modified detected";
+        return false;
+      }
+      if (meta_info.count("memo_dir"))
+        this->meta_->memo_dir = meta_info["memo_dir"];
+      else {
+        qDebug() << "ERROR: no memo_dir detected";
+        return false;
+      }
+      if (meta_info.count("tags")) {
+        QStringList tag_list = meta_info["tags"].split(",");
+        for (const auto& tag : tag_list) {
+          if (tag.isEmpty()) continue;
+          this->meta_->tags.append(tag);
+        }
+      } else {
+        qDebug() << "ERROR: no entry for tags";
+        return false;
+      }
+      // NOTE: color is not considered
+    } else {
+      meta.open(QIODevice::WriteOnly);
+      qDebug() << "empty meta, new memo, writing defaults";
+      QTextStream meta_flow(&meta);
+      meta_flow << "handle:" << this->handle() << ";"
+                << "title:" << "" << ";"
+                << "date_created:"
+                << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+                << "date_modified:"
+                << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+                << "tags:" << "" << ";"
+                << "memo_dir:" << this->meta_->memo_dir << ";";
+    }
+    meta.close();
+  }
   return true;
 }

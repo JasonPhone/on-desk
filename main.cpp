@@ -25,9 +25,11 @@ int main(int argc, char *argv[])
 //  w.setAutoFillBackground(true);
 //  w.setPalette(pal);
 //  w.show();
-  MemoEditor w(nullptr, nullptr);
+  MemoEditor w(nullptr, nullptr, 300, 200);
   w.show();
-//  MemoObj *memo = MemoObj::init_memo_obj(2, "./memos/");
+//  MemoManager mngr;
+//  mngr.show();
+//  MemoObj *memo = MemoObj::init_memo_obj(2, "./memo/");
 //  if (memo != nullptr) {
 //    qDebug() << memo->handle() << ", " << memo->date_created().toString("yy-MM-dd hh:mm:ss");
 //    memo->update_date_modified();

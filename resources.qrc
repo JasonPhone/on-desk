@@ -1,5 +1,22 @@
 <RCC>
     <qresource prefix="/">
-        <file>resource/sty/default_title_style.qss</file>
+        <file>resource/sty/default_title_style.css</file>
+        <file>resource/icon/close.png</file>
+        <file>resource/icon/fmt_bold.svg</file>
+        <file>resource/icon/fmt_italic.svg</file>
+        <file>resource/icon/fmt_list.svg</file>
+        <file>resource/icon/fmt_strike.svg</file>
+        <file>resource/icon/fmt_underline.svg</file>
+        <file>resource/icon/image.svg</file>
+        <file>resource/icon/maximize.png</file>
+        <file>resource/icon/minimize.png</file>
+        <file>resource/icon/more.svg</file>
+        <file>resource/icon/new.png</file>
+        <file>resource/icon/restore.png</file>
+        <file>resource/icon/pin.svg</file>
+        <file>resource/icon/search.svg</file>
+        <file>resource/icon/unpin.svg</file>
+        <file>resource/icon/settings.svg</file>
+        <file>resource/sty/pushbutton_style.css</file>
     </qresource>
 </RCC>

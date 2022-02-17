@@ -1,26 +1,22 @@
-#ifndef EDITORTITLE_H
-#define EDITORTITLE_H
+#ifndef MANAGERTITLE_H
+#define MANAGERTITLE_H
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
 namespace Ui {
-  class EditorTitle;
+  class ManagerTitle;
 }
-class EditorTitle : public QWidget
+class ManagerTitle : public QWidget
 {
     Q_OBJECT
   public:
-    explicit EditorTitle(QWidget *parent);
-    ~EditorTitle();
+    explicit ManagerTitle(QWidget *parent);
+    ~ManagerTitle();
     void set_background_color(QColor clr);
-    void set_title_text(const QString &title_text, int font_size = 12);
     // This is total window width
     void set_window_border_width(int w);
   private:
-    Ui::EditorTitle *ui;
-    // differs
-    void mouseDoubleClickEvent(QMouseEvent *e);
-    // That's common behaviour
+    Ui::ManagerTitle *ui;
     void mousePressEvent(QMouseEvent *e);
     void mouseMoveEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *e);
@@ -30,10 +26,10 @@ class EditorTitle : public QWidget
     void load_style_sheet(const QString &sheet_name);
   signals:
     void signal_close_clicked();
-    void signal_title_changed(const QString &title);
+    void signal_settings_clicked();
   protected slots:
     void slot_close_clicked();
-    void slot_change_title(const QString &title);
+    void slot_settings_clicked();
   private:
     QColor title_color_;
     // for dragging
@@ -42,4 +38,5 @@ class EditorTitle : public QWidget
     int window_border_width_;
 };
 
-#endif // EDITORTITLE_H
+
+#endif // MANAGERTITLE_H

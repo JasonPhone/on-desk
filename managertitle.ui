@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EditorTitle</class>
- <widget class="QWidget" name="EditorTitle">
+ <class>ManagerTitle</class>
+ <widget class="QWidget" name="ManagerTitle">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
+    <width>400</width>
     <height>30</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
+    <width>300</width>
     <height>30</height>
    </size>
   </property>
@@ -23,10 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
-  </property>
-  <property name="toolTip">
-   <string/>
+   <string>OnDesk</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
@@ -45,13 +42,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QPushButton" name="button_top">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
-     </property>
+    <widget class="QPushButton" name="button_new">
      <property name="maximumSize">
       <size>
        <width>30</width>
@@ -59,18 +50,14 @@
       </size>
      </property>
      <property name="toolTip">
-      <string>Toggle on top</string>
+      <string>New memo</string>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="icon">
       <iconset resource="resources.qrc">
-       <normaloff>:/resource/icon/pin.svg</normaloff>
-       <normalon>:/resource/icon/unpin.svg</normalon>:/resource/icon/pin.svg</iconset>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
+       <normaloff>:/resource/icon/new.png</normaloff>:/resource/icon/new.png</iconset>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -78,10 +65,10 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="title_label">
+    <widget class="QLabel" name="label_title_text">
      <property name="minimumSize">
       <size>
-       <width>20</width>
+       <width>100</width>
        <height>30</height>
       </size>
      </property>
@@ -91,11 +78,8 @@
        <height>30</height>
       </size>
      </property>
-     <property name="toolTip">
-      <string>Double click to set memo title</string>
-     </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;OnDesk&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
@@ -106,11 +90,40 @@
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>40</width>
-       <height>30</height>
+       <width>128</width>
+       <height>20</height>
       </size>
      </property>
     </spacer>
+   </item>
+   <item>
+    <widget class="QPushButton" name="button_settings">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Settings</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/resource/icon/settings.svg</normaloff>:/resource/icon/settings.svg</iconset>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QPushButton" name="button_close">
@@ -125,6 +138,9 @@
        <width>30</width>
        <height>30</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Close</string>
      </property>
      <property name="text">
       <string/>

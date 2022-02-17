@@ -78,6 +78,6 @@ void EditorTitle::slot_change_title(const QString &title) {
   emit signal_title_changed(title);
 }
 void EditorTitle::slot_close_clicked() {
-  qDebug() << "titlebar close clicked";
+  qDebug() << "editor close clicked";
   emit signal_close_clicked();
 }

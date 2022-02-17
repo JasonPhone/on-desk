@@ -27,9 +27,15 @@ set(PROJECT_SOURCES
         editortitle.cpp
         editortitle.h
         editortitle.ui
+        managertitle.cpp
+        managertitle.h
+        managertitle.ui
         memoeditor.cpp
         memoeditor.h
         memoeditor.ui
+        memoviewer.cpp
+        memoviewer.h
+        memoviewer.ui
         memoobj.cpp
         memoobj.h
         ${TS_FILES}

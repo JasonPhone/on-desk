@@ -33,7 +33,7 @@
     <number>3</number>
    </property>
    <property name="topMargin">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
     <number>3</number>
@@ -67,6 +67,9 @@
        <width>100</width>
        <height>0</height>
       </size>
+     </property>
+     <property name="autoFormatting">
+      <set>QTextEdit::AutoBulletList</set>
      </property>
      <property name="placeholderText">
       <string>Input memo content...</string>
@@ -104,7 +107,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QToolButton" name="button_bold">
+       <widget class="QPushButton" name="button_bold">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -123,16 +126,26 @@
           <height>30</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
         <property name="toolTip">
          <string>Bold</string>
         </property>
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/resource/icon/fmt_bold.svg</normaloff>:/resource/icon/fmt_bold.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="button_italic">
+       <widget class="QPushButton" name="button_italic">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -157,10 +170,17 @@
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/resource/icon/fmt_italic.svg</normaloff>:/resource/icon/fmt_italic.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="button_underline">
+       <widget class="QPushButton" name="button_underline">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -185,10 +205,17 @@
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/resource/icon/fmt_underline.svg</normaloff>:/resource/icon/fmt_underline.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="button_strike">
+       <widget class="QPushButton" name="button_strike">
         <property name="minimumSize">
          <size>
           <width>30</width>
@@ -207,10 +234,17 @@
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/resource/icon/fmt_strike.svg</normaloff>:/resource/icon/fmt_strike.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="button_list">
+       <widget class="QPushButton" name="button_list">
         <property name="minimumSize">
          <size>
           <width>30</width>
@@ -229,10 +263,17 @@
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/resource/icon/fmt_list.svg</normaloff>:/resource/icon/fmt_list.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="button_image">
+       <widget class="QPushButton" name="button_image">
         <property name="minimumSize">
          <size>
           <width>30</width>
@@ -250,6 +291,13 @@
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/resource/icon/image.svg</normaloff>:/resource/icon/image.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -270,7 +318,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QToolButton" name="button_more">
+       <widget class="QPushButton" name="button_more">
         <property name="minimumSize">
          <size>
           <width>30</width>
@@ -288,6 +336,13 @@
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/resource/icon/more.svg</normaloff>:/resource/icon/more.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

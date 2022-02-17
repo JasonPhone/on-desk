@@ -19,11 +19,13 @@ class MemoObj
     void get_tags(QStringList &tags);
     QString file_path();
     QString meta_path();
+    QString memo_dir();
     // setters
     void set_title(const QString new_title);
     void update_date_modified();
     void append_tag(QString new_tag);
     bool save_meta();
+    bool load_meta();
   private:
     MemoObj(const int hdl, const QString memo_dir);
     struct MetaInfo;
