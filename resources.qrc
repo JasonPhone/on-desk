@@ -19,5 +19,6 @@
         <file>resource/icon/settings.svg</file>
         <file>resource/sty/pushbutton_style.css</file>
         <file>resource/icon/main_icon_note.png</file>
+        <file>resource/i18n/OnDesk_zh_CN.qm</file>
     </qresource>
 </RCC>

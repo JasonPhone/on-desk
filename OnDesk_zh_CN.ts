@@ -34,6 +34,7 @@
     <name>ManagerTitle</name>
     <message>
         <location filename="managertitle.ui" line="26"/>
+        <location filename="managertitle.ui" line="82"/>
         <source>OnDesk</source>
         <translation>案牍</translation>
     </message>
@@ -43,9 +44,8 @@
         <translation>新建案牍</translation>
     </message>
     <message>
-        <location filename="managertitle.ui" line="82"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;OnDesk&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;案牍&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="managertitle.ui" line="114"/>

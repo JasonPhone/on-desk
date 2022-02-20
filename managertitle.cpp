@@ -13,7 +13,7 @@ ManagerTitle::ManagerTitle(QWidget *parent)
       window_border_width_(0)
 {
   ui->setupUi(this);
-//  init_widgets();
+  init_widgets();
   init_connects();
 //  load_style_sheet();
 }
@@ -51,6 +51,7 @@ void ManagerTitle::mouseReleaseEvent(QMouseEvent *e) {
 }
 void ManagerTitle::init_widgets() {
   ui->button_close->setToolTip(tr("Close"));
+  ui->button_settings->hide();
 }
 void ManagerTitle::init_connects() {
   connect(ui->button_close, &QPushButton::clicked,
