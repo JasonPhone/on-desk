@@ -18,5 +18,6 @@
         <file>resource/icon/unpin.svg</file>
         <file>resource/icon/settings.svg</file>
         <file>resource/sty/pushbutton_style.css</file>
+        <file>resource/icon/main_icon_note.png</file>
     </qresource>
 </RCC>

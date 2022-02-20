@@ -18,24 +18,9 @@ int main(int argc, char *argv[])
       break;
     }
   }
-//  MemoManager w;
-//  QColor clr(173, 153, 137);
-//  QPalette pal = w.palette();
-//  pal.setColor(QPalette::Window, clr);
-//  w.setAutoFillBackground(true);
-//  w.setPalette(pal);
-//  w.show();
-  MemoEditor w(nullptr, nullptr, 300, 200);
-  w.show();
-//  MemoManager mngr;
-//  mngr.show();
-//  MemoObj *memo = MemoObj::init_memo_obj(2, "./memo/");
-//  if (memo != nullptr) {
-//    qDebug() << memo->handle() << ", " << memo->date_created().toString("yy-MM-dd hh:mm:ss");
-//    memo->update_date_modified();
-//    memo->save_meta();
-
-//  } else
-//    qDebug() << "got nullptr";
+  MemoManager mngr;
+  qDebug() << "main::setting main icon";
+  mngr.setWindowIcon(QIcon(":/resource/icon/main_icon_note.png"));
+  mngr.show();
   return a.exec();
 }

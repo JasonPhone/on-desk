@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string/>
   </property>
   <property name="toolTip">
    <string/>
@@ -95,7 +95,7 @@
       <string>Double click to set memo title</string>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string/>
      </property>
     </widget>
    </item>
@@ -125,6 +125,9 @@
        <width>30</width>
        <height>30</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Close</string>
      </property>
      <property name="text">
       <string/>

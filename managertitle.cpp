@@ -55,11 +55,16 @@ void ManagerTitle::init_widgets() {
 void ManagerTitle::init_connects() {
   connect(ui->button_close, &QPushButton::clicked,
           this, &ManagerTitle::slot_close_clicked);
+  connect(ui->button_create, &QPushButton::clicked,
+          this, &ManagerTitle::signal_create_clicked);
 }
 void ManagerTitle::slot_close_clicked() {
   qDebug() << "manager close clicked";
   emit signal_close_clicked();
 }
 void ManagerTitle::slot_settings_clicked() {
-
+  emit signal_settings_clicked();
+}
+void ManagerTitle::slot_create_clicked() {
+  emit signal_create_clicked();
 }

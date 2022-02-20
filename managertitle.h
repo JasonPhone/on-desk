@@ -27,9 +27,11 @@ class ManagerTitle : public QWidget
   signals:
     void signal_close_clicked();
     void signal_settings_clicked();
+    void signal_create_clicked();
   protected slots:
     void slot_close_clicked();
     void slot_settings_clicked();
+    void slot_create_clicked();
   private:
     QColor title_color_;
     // for dragging

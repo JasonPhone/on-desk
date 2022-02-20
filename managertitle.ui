@@ -42,7 +42,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QPushButton" name="button_new">
+    <widget class="QPushButton" name="button_create">
      <property name="maximumSize">
       <size>
        <width>30</width>

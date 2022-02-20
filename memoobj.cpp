@@ -33,7 +33,7 @@ MemoObj::~MemoObj() {
 // getters
 MemoObj* MemoObj::init_memo_obj(const int handle,
                                 const QString memo_dir) {
-  qDebug() << "initiating memo with handle " << handle << ", dir " << memo_dir;
+  qDebug() << "memoobj::initiating memo with handle " << handle << ", dir " << memo_dir;
   // need to store two files
   // thus need two file paths
   QDir memo_folder(memo_dir);
@@ -44,13 +44,13 @@ MemoObj* MemoObj::init_memo_obj(const int handle,
     }
   }
   MemoObj *memo = new MemoObj(handle, memo_dir);
-  qDebug() << "dir ok";
+  qDebug() << "memoobj::dir ok";
   if (!memo->load_meta()) {
-    qDebug() << "ERROR: failed to load meta info";
+    qDebug() << "ERROR:memoobj::failed to load meta info";
     delete memo;
     return nullptr;
   }
-  qDebug() << "files created";
+  qDebug() << "memoobj::files created";
   // return memo ptr
   return memo;
 }
@@ -89,6 +89,7 @@ void MemoObj::append_tag(QString new_tag) {
   meta_->tags.append(new_tag);
 }
 bool MemoObj::save_meta() {
+  update_date_modified();
   QString meta_path =
       meta_->memo_dir + QString("%1").arg(meta_->handle) + ".memo";
   QFile meta(meta_path);
@@ -108,7 +109,7 @@ bool MemoObj::save_meta() {
             << meta_->date_modified.toString("yyyy-MM-dd hh:mm:ss") << ";";
   // QStringList tags;
   meta_flow << "tags:";
-  qDebug() << "size of tags: " << meta_->tags.size();
+  qDebug() << "memoobj::size of tags: " << meta_->tags.size();
   for (const auto& tag : meta_->tags) {
     meta_flow << tag << ",";
   }
@@ -121,25 +122,25 @@ bool MemoObj::save_meta() {
 }
 bool MemoObj::load_meta() {
   // test the file
-  qDebug() << "testing meta";
+  qDebug() << "memoobj::testing meta";
   QString meta_path = this->meta_path();
   QFile meta(meta_path);
-  qDebug() << "try opening " << meta_path;
+  qDebug() << "memoobj::try opening " << meta_path;
   if (meta.open(QIODevice::NewOnly)) {
-    qDebug() << "new memo meta";
+    qDebug() << "memoobj::new memo meta";
     QTextStream meta_flow(&meta);
     meta_flow << "handle:" << this->handle() << ";"
               << "title:" << "" << ";"
               << "date_created:"
-              << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+              << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") << ";"
               << "date_modified:"
-              << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+              << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") << ";"
               << "tags:" << "" << ";"
               << "memo_dir:" << this->meta_->memo_dir << ";";
     meta.close();
     QString file_path = this->file_path();
     QFile file(file_path);
-    qDebug() << "try creating" << file_path;
+    qDebug() << "memoobj::try creating" << file_path;
     file.open(QIODevice::WriteOnly);
     file.close();
   } else {
@@ -151,15 +152,15 @@ bool MemoObj::load_meta() {
     qDebug() << meta_str;
     QMap<QString, QString> meta_info;
     if (!meta_str.isEmpty()) {
-      qDebug() << "found existing meta, reading";
+      qDebug() << "memoobj::found existing meta, reading";
       QStringList entry = meta_str.split(";");
       for (auto& e : entry) {
         e = e.simplified();
         if (e.isEmpty()) continue;
-        qDebug() << e;
+//        qDebug() << e;
         int split_pos = e.indexOf(':');
         if (split_pos == -1) {
-          qDebug() << "ERROR: cannot read meta info: wrong configure format";
+          qDebug() << "ERROR:memoobj::cannot read meta info: wrong configure format";
           return false;
         } else {
           QString key = e.first(split_pos).simplified();
@@ -170,13 +171,13 @@ bool MemoObj::load_meta() {
       if (meta_info.count("handle"))
         this->meta_->handle = meta_info["handle"].toInt();
       else {
-        qDebug() << "ERROR: no handle detected";
+        qDebug() << "ERROR:memoobj::no handle detected";
         return false;
       }
       if (meta_info.count("title"))
         this->meta_->title = meta_info["title"];
       else {
-        qDebug() << "ERROR: no title detected";
+        qDebug() << "ERROR:memoobj::no title detected";
         return false;
       }
       // yyyy-MM-dd hh:mm:ss
@@ -184,20 +185,20 @@ bool MemoObj::load_meta() {
         this->meta_->date_created =
             QDateTime::fromString(meta_info["date_created"], "yyyy-MM-dd hh:mm:ss");
       else {
-        qDebug() << "ERROR: no date_created detected";
+        qDebug() << "ERROR:memoobj::no date_created detected";
         return false;
       }
       if (meta_info.count("date_modified"))
         this->meta_->date_modified =
             QDateTime::fromString(meta_info["date_modified"], "yyyy-MM-dd hh:mm:ss");
       else {
-        qDebug() << "ERROR: no date_modified detected";
+        qDebug() << "ERROR:memoobj::no date_modified detected";
         return false;
       }
       if (meta_info.count("memo_dir"))
         this->meta_->memo_dir = meta_info["memo_dir"];
       else {
-        qDebug() << "ERROR: no memo_dir detected";
+        qDebug() << "ERROR:memoobj::no memo_dir detected";
         return false;
       }
       if (meta_info.count("tags")) {
@@ -207,20 +208,20 @@ bool MemoObj::load_meta() {
           this->meta_->tags.append(tag);
         }
       } else {
-        qDebug() << "ERROR: no entry for tags";
+        qDebug() << "ERROR:memoobj::no entry for tags";
         return false;
       }
       // NOTE: color is not considered
     } else {
       meta.open(QIODevice::WriteOnly);
-      qDebug() << "empty meta, new memo, writing defaults";
+      qDebug() << "memoobj::empty meta, new memo, writing defaults";
       QTextStream meta_flow(&meta);
       meta_flow << "handle:" << this->handle() << ";"
                 << "title:" << "" << ";"
                 << "date_created:"
-                << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+                << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") << ";"
                 << "date_modified:"
-                << QDateTime::currentDateTime().toString("yy-MM-dd hh:mm:ss") << ";"
+                << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") << ";"
                 << "tags:" << "" << ";"
                 << "memo_dir:" << this->meta_->memo_dir << ";";
     }

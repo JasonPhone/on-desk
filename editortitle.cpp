@@ -40,9 +40,11 @@ void EditorTitle::set_title_text(const QString &title_text, int font_size) {
 // protects
 void EditorTitle::mouseDoubleClickEvent(QMouseEvent *e) {
   bool ok;
-  QString title_text = QInputDialog::getText(this->parentWidget(),
-                                             tr("Set title"), tr("Input the title"),
-                                             QLineEdit::Normal, tr("Memo"), &ok);
+  QString old_title = ui->title_label->text();
+  QString title_text =
+      QInputDialog::getText(this->parentWidget(),
+                            tr("Set title"), tr("Input the title"),
+                            QLineEdit::Normal, old_title, &ok);
   slot_change_title(title_text);
   return QWidget::mouseDoubleClickEvent(e);
 }
@@ -72,12 +74,19 @@ void EditorTitle::init_widgets() {
 void EditorTitle::init_connects() {
   connect(ui->button_close, &QPushButton::clicked,
           this, &EditorTitle::slot_close_clicked);
+  connect(ui->button_top, &QPushButton::clicked,
+          this, &EditorTitle::slot_toggle_ontop);
 }
 void EditorTitle::slot_change_title(const QString &title) {
+  if (title.isEmpty()) return;
   this->set_title_text(title);
   emit signal_title_changed(title);
 }
 void EditorTitle::slot_close_clicked() {
-  qDebug() << "editor close clicked";
+//  qDebug() << "editor close clicked";
   emit signal_close_clicked();
+}
+void EditorTitle::slot_toggle_ontop() {
+  qDebug() << "toggle on top";
+  emit signal_toggle_ontop(ui->button_top->isChecked());
 }

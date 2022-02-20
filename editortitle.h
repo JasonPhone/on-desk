@@ -31,9 +31,11 @@ class EditorTitle : public QWidget
   signals:
     void signal_close_clicked();
     void signal_title_changed(const QString &title);
+    void signal_toggle_ontop(bool is_ontop);
   protected slots:
     void slot_close_clicked();
     void slot_change_title(const QString &title);
+    void slot_toggle_ontop();
   private:
     QColor title_color_;
     // for dragging

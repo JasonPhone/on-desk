@@ -4,67 +4,30 @@
 <context>
     <name>EditorTitle</name>
     <message>
-        <location filename="editortitle.ui" line="26"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="editortitle.ui" line="62"/>
         <source>Toggle on top</source>
-        <translation type="unfinished"></translation>
+        <translation>切换置顶</translation>
     </message>
     <message>
         <location filename="editortitle.ui" line="95"/>
         <source>Double click to set memo title</source>
-        <translation type="unfinished"></translation>
+        <translation>双击设置标题</translation>
     </message>
     <message>
-        <location filename="editortitle.ui" line="98"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="editortitle.cpp" line="44"/>
+        <location filename="editortitle.cpp" line="46"/>
         <source>Set title</source>
-        <translation type="unfinished"></translation>
+        <translation>设置标题</translation>
     </message>
     <message>
-        <location filename="editortitle.cpp" line="44"/>
+        <location filename="editortitle.cpp" line="46"/>
         <source>Input the title</source>
-        <translation type="unfinished"></translation>
+        <translation>输入标题</translation>
     </message>
     <message>
-        <location filename="editortitle.cpp" line="45"/>
-        <source>Memo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="editortitle.cpp" line="70"/>
+        <location filename="editortitle.ui" line="130"/>
+        <location filename="editortitle.cpp" line="72"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FineTitle</name>
-    <message>
-        <location filename="finetitle.cpp" line="131"/>
-        <source>Minimize</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="finetitle.cpp" line="136"/>
-        <source>Restore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="finetitle.cpp" line="141"/>
-        <source>Maximize</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="finetitle.cpp" line="146"/>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -72,123 +35,147 @@
     <message>
         <location filename="managertitle.ui" line="26"/>
         <source>OnDesk</source>
-        <translation type="unfinished"></translation>
+        <translation>案牍</translation>
     </message>
     <message>
         <location filename="managertitle.ui" line="53"/>
         <source>New memo</source>
-        <translation type="unfinished"></translation>
+        <translation>新建案牍</translation>
     </message>
     <message>
         <location filename="managertitle.ui" line="82"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;OnDesk&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="managertitle.ui" line="114"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="managertitle.ui" line="143"/>
         <location filename="managertitle.cpp" line="53"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭列表</translation>
     </message>
 </context>
 <context>
     <name>MemoEditor</name>
     <message>
-        <location filename="memoeditor.ui" line="26"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="memoeditor.ui" line="75"/>
         <source>Input memo content...</source>
-        <translation type="unfinished"></translation>
+        <translation>输入案牍内容...</translation>
     </message>
     <message>
         <location filename="memoeditor.ui" line="133"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>粗体</translation>
     </message>
     <message>
         <location filename="memoeditor.ui" line="168"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>斜体</translation>
     </message>
     <message>
         <location filename="memoeditor.ui" line="203"/>
         <source>Underline</source>
-        <translation type="unfinished"></translation>
+        <translation>下划线</translation>
     </message>
     <message>
         <location filename="memoeditor.ui" line="232"/>
         <source>Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>删除线</translation>
     </message>
     <message>
         <location filename="memoeditor.ui" line="261"/>
         <source>List</source>
-        <translation type="unfinished"></translation>
+        <translation>列表</translation>
     </message>
     <message>
         <location filename="memoeditor.ui" line="290"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>插入图片</translation>
     </message>
     <message>
-        <location filename="memoeditor.ui" line="335"/>
+        <location filename="memoeditor.ui" line="341"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>更多</translation>
+    </message>
+    <message>
+        <location filename="memoeditor.cpp" line="55"/>
+        <source>&amp;Delete memo</source>
+        <translation>&amp;删除案牍</translation>
+    </message>
+    <message>
+        <location filename="memoeditor.cpp" line="57"/>
+        <source>&amp;Open memo list</source>
+        <translation>&amp;打开案牍列表</translation>
+    </message>
+    <message>
+        <location filename="memoeditor.cpp" line="224"/>
+        <source>Confirm delete</source>
+        <translation>确认删除</translation>
+    </message>
+    <message>
+        <location filename="memoeditor.cpp" line="224"/>
+        <source>Delete this memo?</source>
+        <translation>删除此案牍？</translation>
     </message>
 </context>
 <context>
     <name>MemoManager</name>
     <message>
-        <location filename="memomanager.ui" line="20"/>
-        <source>MemoManager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="memomanager.ui" line="87"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索...</translation>
     </message>
     <message>
         <location filename="memomanager.ui" line="109"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>点击搜索</translation>
+    </message>
+    <message>
+        <location filename="memomanager.cpp" line="208"/>
+        <source>&amp;Restore</source>
+        <translation>&amp;还原</translation>
+    </message>
+    <message>
+        <location filename="memomanager.cpp" line="209"/>
+        <source>&amp;Quit</source>
+        <translation>&amp;退出案牍</translation>
+    </message>
+    <message>
+        <location filename="memomanager.cpp" line="223"/>
+        <source>OnDesk</source>
+        <translation>案牍</translation>
     </message>
 </context>
 <context>
     <name>MemoViewer</name>
     <message>
-        <location filename="memoviewer.ui" line="17"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="memoviewer.ui" line="58"/>
-        <location filename="memoviewer.ui" line="83"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="memoviewer.ui" line="102"/>
+        <location filename="memoviewer.ui" line="105"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>更多</translation>
     </message>
     <message>
-        <location filename="memoviewer.cpp" line="90"/>
+        <location filename="memoviewer.cpp" line="92"/>
         <source>&amp;Open memo</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;打开案牍</translation>
     </message>
     <message>
-        <location filename="memoviewer.cpp" line="91"/>
+        <location filename="memoviewer.cpp" line="93"/>
         <source>&amp;Delete memo</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;删除案牍</translation>
+    </message>
+    <message>
+        <location filename="memoviewer.cpp" line="105"/>
+        <source>Confirm delete</source>
+        <translation>确认删除</translation>
+    </message>
+    <message>
+        <location filename="memoviewer.cpp" line="105"/>
+        <source>Delete this memo?</source>
+        <translation>删除此案牍？</translation>
     </message>
 </context>
 </TS>

@@ -3,7 +3,9 @@
 
 #include <QWidget>
 #include <QList>
+#include <QListWidget>
 #include <QMap>
+#include <QSystemTrayIcon>
 #include "memoobj.h"
 #include "memoeditor.h"
 #include "memoviewer.h"
@@ -34,26 +36,31 @@ class MemoManager : public QWidget
     bool init_memos();
     // init viewers and add to scroll area
     bool init_viewers();
+    bool refresh_memo_list(const QList<MemoObj*> &memo_list);
     void init_connects();
-    // open memo editor
-    bool open_memo(int handle);
-    // for searchbar
-    void search_memos(const SearchType search_type,
-                      const QString search_text);
+    void init_tray_icon();
     // all configures
     struct MngrConf;
     MngrConf *conf_;
     QMap<int, MemoObj*> memos_;
     QMap<int, MemoEditor*> memo_editors_;
+    QMap<int, QListWidgetItem*> memo_viewer_items_;
     QMap<int, MemoViewer*> memo_viewers_;
+    QSystemTrayIcon *tray_icon_;
+    QAction *act_restore_, *act_quit_;
+    QMenu *tray_icon_menu_;
 
   signals:
-    void signal_memo_delete(int handle);
     void signal_exit();
   private slots:
     void slot_close_clicked();
-    void slot_memo_created(int handle);
+    void slot_exit();
+    void slot_create_memo();
     void slot_memo_deleted(int handle);
+    void slot_open_memo(int handle);
+    void slot_show_manager();
+    // for searchbar
+    void slot_search_memos();
 
 };
 #endif // MEMOMANAGER_H

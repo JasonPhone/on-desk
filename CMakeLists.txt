@@ -22,8 +22,6 @@ set(PROJECT_SOURCES
         memomanager.cpp
         memomanager.h
         memomanager.ui
-        finetitle.cpp
-        finetitle.h
         editortitle.cpp
         editortitle.h
         editortitle.ui
