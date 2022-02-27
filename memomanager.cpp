@@ -16,7 +16,6 @@ struct MemoManager::MngrConf {
      theme_color = QColor(255, 255, 255);
    }
 };
-
 MemoManager::MemoManager(QWidget *parent)
     : QWidget(parent),
       ui(new Ui::MemoManager) {
@@ -353,6 +352,7 @@ void MemoManager::slot_search_memos() {
   QList<MemoObj*> memo_list;
   for (auto hdl : handles) {
     if (memos_.count(hdl)) memo_list.append(memos_[hdl]);
+    qDebug() << hdl << ", " << weight[hdl];
   }
   refresh_memo_list(memo_list);
 }

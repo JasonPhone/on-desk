@@ -135,17 +135,17 @@
         <translation>点击搜索</translation>
     </message>
     <message>
-        <location filename="memomanager.cpp" line="208"/>
+        <location filename="memomanager.cpp" line="207"/>
         <source>&amp;Restore</source>
         <translation>&amp;还原</translation>
     </message>
     <message>
-        <location filename="memomanager.cpp" line="209"/>
+        <location filename="memomanager.cpp" line="208"/>
         <source>&amp;Quit</source>
         <translation>&amp;退出案牍</translation>
     </message>
     <message>
-        <location filename="memomanager.cpp" line="223"/>
+        <location filename="memomanager.cpp" line="222"/>
         <source>OnDesk</source>
         <translation>案牍</translation>
     </message>

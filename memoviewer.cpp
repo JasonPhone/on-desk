@@ -80,7 +80,6 @@ bool MemoViewer::init_memo() {
   // title and date_modified
   ui->label_date->setText(memo_->date_modified().toString("yyyy-MM-dd hh:mm:ss"));
   ui->label_title->setText(memo_->title());
-  // TODO?: format, previous 5 lines
   // appearance
   ui->textBrowser->setAttribute(Qt::WA_TransparentForMouseEvents);
   // this->setStyleSheet("*:hover{background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.0 #ffd9aa, stop:0.5 #ffbb6e, stop:0.55 #feae42, stop:1.0 #fedb74);}");
